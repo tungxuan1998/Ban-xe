@@ -6,10 +6,23 @@ public class MainWindow extends JFrame {
     private static MainWindow window = new MainWindow();
 
 
+    private JSplitPane horizontalSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+
     private JSplitPane verticalSplitter = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 
+    /**
+     * Private MainWindow constructor
+     */
     private MainWindow() {
         super("Ban xe");
+
+        horizontalSplitter.setTopComponent(verticalSplitter);
+        horizontalSplitter.setUI(new MetalSplitPaneUI());
+        horizontalSplitter.setResizeWeight(1.0);
+        horizontalSplitter.setOneTouchExpandable(true);
+        horizontalSplitter.setContinuousLayout(true);
+        horizontalSplitter.setDividerSize(12);
+        add(horizontalSplitter, BorderLayout.CENTER);
 
         verticalSplitter.setUI(new MetalSplitPaneUI());
         verticalSplitter.setResizeWeight(0.0);
@@ -42,7 +55,7 @@ public class MainWindow extends JFrame {
      * @param component the component to be added
      */
     public void setBottom(JComponent component) {
-        add(component, BorderLayout.SOUTH);
+        horizontalSplitter.setBottomComponent(component);
     }
 
     /**

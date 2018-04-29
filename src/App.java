@@ -3,7 +3,7 @@ import javax.swing.*;
 public class App {
     private static MainWindow mainWindow;
     private static MenuBar menuBar;
-    private static VehicleList vehicleList;
+    private static VehicleListPanel vehicleListPanel;
 
     public static MainWindow getMainWindow() {
         return mainWindow;
@@ -13,8 +13,8 @@ public class App {
         return menuBar;
     }
 
-    public static VehicleList getVehicleList() {
-        return vehicleList;
+    public static VehicleListPanel getVehicleListPanel() {
+        return vehicleListPanel;
     }
 
     public static void run() {
@@ -27,10 +27,13 @@ public class App {
         mainWindow = MainWindow.getInstance();
 
         menuBar = MenuBar.getInstance();
-        vehicleList = VehicleList.getInstance();
+        vehicleListPanel = new VehicleListPanel();
 
         mainWindow.setTop(menuBar);
-        mainWindow.setLeft(new JLabel("Hello World"));
+        mainWindow.setLeft(vehicleListPanel);
+//        mainWindow.setLeft(new JLabel("       Fuck JList"));
+        mainWindow.setRight(new JLabel("        The future information panel"));
+        mainWindow.setBottom(new JLabel("This gonna be the notification panel"));
     }
 
     public static void main(String[] args) {
